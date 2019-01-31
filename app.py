@@ -1,11 +1,12 @@
 from flask import *
-import db
+import db,hashlib
 app Flask(__name__)
 
 @app.route("/")
 def index():
 return render_template("index.html")
 
+#User Registration
 @app.route("/create",methods=["POST", "GET"])
 def create():
 if request.method == "POST":
@@ -18,6 +19,20 @@ session["username"]=username
 return render_template("index.html",username =session["username"])
     return render_template("create.html")
 
+# Login
+@app.route("/login",methods=["POST", "GET"])
+def login():
+    if request.method == "POST"
+    username =request.form["username"]
+    password = request.form["password"]
+    hashed_pass = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    user = db.get_user_by_name(username)
+true_pass = user[2]
+if hashed_pass ==true pass:
+session["username"] = username
+    return render_template("login.html")
+
+# Tweet
 @app.route("/tweet",methods=["POST","GET"])
 def tweet():
     if request.methods == "POST":
