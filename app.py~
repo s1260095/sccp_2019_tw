@@ -1,0 +1,25 @@
+from flask import *
+import db
+app Flask(__name__)
+
+@app.route("/")
+def index():
+return render_template("index.html")
+
+@app.route("/create",methods=["POST", "GET"])
+def create():
+if request.method == "POST":
+username = request.form["username"]
+password = request.form["password"]
+   
+if  db.get_user_by_name(name) is None:# ゆーざー名が被ってなければ
+db.add_user(username,password)
+session["username"]=username
+return render_template("index.html",username =session["username"])
+    return render_template("create.html")
+
+
+app.secret_key='fefefe'
+
+if __name__ == "__main__":
+app.run(debug=True)

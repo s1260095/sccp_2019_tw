@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+  </head>
+
+  <body>
+    <h2>Sign up Form</h2>
+    >
+    
+    {% if username %}
+    
+    <h1> HELLO {{ username }}!!</h1>
+    {% else %}
+    <h1>HELLO GUEST </h1>
+    {% endif %}
+  </body>
+  </html>
